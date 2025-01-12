@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:simplumio/widgets/base/base_dropdown.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
 import 'package:simplumio/widgets/custom/custom_calculator.dart';
 
-class PlanningAccountFormScreen extends StatefulWidget {
-  const PlanningAccountFormScreen({super.key});
+class PlanningBudgetFormScreen extends StatefulWidget {
+  const PlanningBudgetFormScreen({super.key});
 
   @override
-  State<PlanningAccountFormScreen> createState() => PlanningAccountFormScreenState();
+  State<PlanningBudgetFormScreen> createState() => PlanningBudgetFormScreenState();
 }
 
-class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
+class PlanningBudgetFormScreenState extends State<PlanningBudgetFormScreen> {
 
   void onOpenCalculator() {
     showModalBottomSheet(
@@ -57,13 +58,14 @@ class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> periods = ['One week', '15 Days', 'Monthly', 'Custom'];
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0, // Remove shadow
         title: Text(
-          'Add new account',
+          'Add new budget',
           style: TextStyle(
             color: Colors.black,
             fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
@@ -75,7 +77,7 @@ class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
           icon: Icon(
               Icons.arrow_back_ios_new_outlined,
               size: Theme.of(context).textTheme.titleMedium?.fontSize
-          ), // Custom back icon
+          ),
           onPressed: () {
             Navigator.pop(context); // Pops the current screen from the stack
           },
@@ -83,33 +85,44 @@ class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          spacing: 30,
-          children: [
-            BaseTextInput(
-              label: 'Account Name',
-              placeholder: 'Cash',
-              icon: false,
-            ),
-            BaseTextInput(
-              label: 'Account Number (optional)',
-              placeholder: '123-456-7890',
-              icon: true,
-            ),
-            GestureDetector(
-              onTap: () {
-                onOpenCalculator();
-              },
-              child: AbsorbPointer(
-                child: BaseTextInput(
-                  label: 'Initial value',
-                  placeholder: '0.00',
-                  icon: false,
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: 30,
+            children: [
+              BaseTextInput(
+                label: 'Name',
+                placeholder: 'Office Budget',
+                icon: false,
+              ),
+              GestureDetector(
+                onTap: () {
+                  onOpenCalculator();
+                },
+                child: AbsorbPointer(
+                  child: BaseTextInput(
+                    label: 'Initial value',
+                    placeholder: '0.00',
+                    icon: false,
+                  ),
                 ),
               ),
-            ),
-
-          ],
+              BaseDropdown(
+                label: 'Period',
+                placeholder: 'Select period',
+                items: periods,
+              ),
+              BaseDropdown(
+                label: 'From',
+                placeholder: 'Select Date',
+                items: [],
+              ),
+              BaseDropdown(
+                label: 'To',
+                placeholder: 'Select Date',
+                items: [],
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: SizedBox(
@@ -122,7 +135,7 @@ class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
               onPressed: () {},
               backgroundColor: Theme.of(context).colorScheme.primary,
               label: Text(
-                'Save Account',
+                'Save Budget',
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onPrimary,
                   fontWeight: FontWeight.bold

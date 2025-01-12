@@ -65,6 +65,7 @@ class BaseTextInputState extends State<BaseTextInput> {
               hintStyle: TextStyle(
                 fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
                 color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.bold
               ),
               border: InputBorder.none,
               filled: true,

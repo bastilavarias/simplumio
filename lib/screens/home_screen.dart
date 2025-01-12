@@ -99,17 +99,6 @@ class HomeScreen extends StatelessWidget {
                        BudgetProgress(transferLimit: 5600, amountSpent: 1350),
                      ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text('updated 3 min ago', style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
-                          fontStyle: FontStyle.italic,
-                        )),
-                      ],
-                    )
                   ],
 
                 ),

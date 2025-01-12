@@ -12,16 +12,16 @@ class CustomCalculator extends StatelessWidget {
     Color buttonColor = Theme.of(context).colorScheme.surface;
     TextStyle displayStyle = TextStyle(
       color: Theme.of(context).colorScheme.primary,
-      fontSize: Theme.of(context).textTheme.headlineLarge?.fontSize,
+      fontSize: Theme.of(context).textTheme.displaySmall?.fontSize,
       fontWeight: FontWeight.bold
     );
     TextStyle expressionStyle = TextStyle(
       color: Theme.of(context).colorScheme.secondary,
-      fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
+      fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
     );
     TextStyle buttonStyle = TextStyle(
         color: Theme.of(context).colorScheme.primary,
-        fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+        fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
         decorationStyle: TextDecorationStyle.wavy
     );
 

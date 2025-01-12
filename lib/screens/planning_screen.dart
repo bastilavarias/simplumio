@@ -55,6 +55,7 @@ class PlanningScreenState extends State<PlanningScreen>
             tabs: const [
               Tab(text: 'Accounts'),
               Tab(text: 'Budgets'),
+              Tab(text: 'Goals'),
             ],
           ),
           Expanded(
@@ -63,6 +64,7 @@ class PlanningScreenState extends State<PlanningScreen>
               children: [
                 PlanningAccountManagementSubPage(),
                 PlanningBudgetManagementSubPage(),
+                Text('Goals')
               ],
             ),
           ),

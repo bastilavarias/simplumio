@@ -10,7 +10,7 @@ class TransactionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        'Transaction #1',
+        '2pc Chicken',
         style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.primary,
@@ -29,7 +29,7 @@ class TransactionItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            '-₱450.40',
+            '-450.40',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.red, // Use the provided color for the amount
