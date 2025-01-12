@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class BudgetProgressIndicator extends StatelessWidget {
+class BudgetProgress extends StatelessWidget {
   final double transferLimit;
   final double amountSpent;
 
-  const BudgetProgressIndicator({
+  const BudgetProgress({
     super.key,
     required this.transferLimit,
     required this.amountSpent,

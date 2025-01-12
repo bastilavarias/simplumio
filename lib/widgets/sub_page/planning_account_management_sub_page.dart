@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:simplumio/screens/planning_account_form_screen.dart';
+import 'package:simplumio/widgets/account_item.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
 
-class PlanningAccountManagementPane extends StatefulWidget {
-  const PlanningAccountManagementPane({super.key});
+class PlanningAccountManagementSubPage extends StatefulWidget {
+  const PlanningAccountManagementSubPage({super.key});
 
   @override
-  State<PlanningAccountManagementPane> createState() => PlanningAccountManagementPaneState();
+  State<PlanningAccountManagementSubPage> createState() => PlanningAccountManagementSubPageState();
 }
 
-class PlanningAccountManagementPaneState extends State<PlanningAccountManagementPane> {
+class PlanningAccountManagementSubPageState extends State<PlanningAccountManagementSubPage> {
 
   void onOpenAddForm() {
     Navigator.push(
@@ -68,7 +69,7 @@ class PlanningAccountManagementPaneState extends State<PlanningAccountManagement
               physics: NeverScrollableScrollPhysics(),
               itemCount: items.length,
               itemBuilder: (context, index) {
-                return AccountPreviewTile(id: index, key: Key('${index}'));
+                return AccountItem(id: index, key: Key('${index}'));
               },
               onReorder: (int oldIndex, int newIndex) {
                 setState(() {
@@ -88,43 +89,3 @@ class PlanningAccountManagementPaneState extends State<PlanningAccountManagement
   }
 }
 
-class AccountPreviewTile extends StatelessWidget {
-  const AccountPreviewTile({super.key, required this.id});
-
-  final int id;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        'Cash',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      subtitle: Text(
-        'Transactions: 47',
-        style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.secondary,
-        ),
-      ),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            "447.84 PHP",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize
-            ),
-          ),
-        ],
-      ),
-      onTap: () {
-        // Action to perform when the ListTile is tapped
-      },
-    );
-  }
-}

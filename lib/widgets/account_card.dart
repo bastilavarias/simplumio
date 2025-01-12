@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class PlanningAccountCard extends StatelessWidget {
+class AccountCard extends StatelessWidget {
   final String amount;
   final String label;
 
-  const PlanningAccountCard({
+  const AccountCard({
     super.key,
     required this.amount,
     required this.label,

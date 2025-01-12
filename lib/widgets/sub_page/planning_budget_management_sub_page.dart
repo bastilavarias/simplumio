@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:simplumio/screens/planning_account_form_screen.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
 
-class PlanningBudgetManagementPane extends StatefulWidget {
-  const PlanningBudgetManagementPane({super.key});
+class PlanningBudgetManagementSubPage extends StatefulWidget {
+  const PlanningBudgetManagementSubPage({super.key});
 
   @override
-  State<PlanningBudgetManagementPane> createState() => PlanningBudgetManagementPaneState();
+  State<PlanningBudgetManagementSubPage> createState() => PlanningBudgetManagementSubPageState();
 }
 
-class PlanningBudgetManagementPaneState extends State<PlanningBudgetManagementPane> {
+class PlanningBudgetManagementSubPageState extends State<PlanningBudgetManagementSubPage> {
 
   void onOpenForm() {
     Navigator.push(

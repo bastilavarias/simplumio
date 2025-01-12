@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class TransactionListTile extends StatelessWidget {
+class TransactionItem extends StatelessWidget {
 
-  const TransactionListTile({
+  const TransactionItem({
     super.key,
   });
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:simplumio/widgets/budget_progress_indicator.dart';
-import 'package:simplumio/widgets/planning_account_card.dart';
-import 'package:simplumio/widgets/transaction_list_tile.dart';
+import 'package:simplumio/widgets/account_card.dart';
+import 'package:simplumio/widgets/budget_progress.dart';
+import 'package:simplumio/widgets/transaction_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -72,19 +72,19 @@ class HomeScreen extends StatelessWidget {
                       shrinkWrap: true, // Prevent GridView from taking up unnecessary space
                       physics: const NeverScrollableScrollPhysics(), // Disable scrolling
                       children: [
-                        PlanningAccountCard(
+                        AccountCard(
                           amount: '447.84 PHP',
                           label: 'Cash',
                         ),
-                        PlanningAccountCard(
+                        AccountCard(
                           amount: '447.84 PHP',
                           label: 'Cash',
                         ),
-                        PlanningAccountCard(
+                        AccountCard(
                           amount: '447.84 PHP',
                           label: 'Cash',
                         ),
-                        PlanningAccountCard(
+                        AccountCard(
                           amount: '447.84 PHP',
                           label: 'Cash',
                         ),
@@ -95,8 +95,8 @@ class HomeScreen extends StatelessWidget {
                     Column(
                       spacing: 16,
                      children: [
-                       BudgetProgressIndicator(transferLimit: 7000, amountSpent: 3000),
-                       BudgetProgressIndicator(transferLimit: 5600, amountSpent: 1350),
+                       BudgetProgress(transferLimit: 7000, amountSpent: 3000),
+                       BudgetProgress(transferLimit: 5600, amountSpent: 1350),
                      ],
                     ),
                     Row(
@@ -158,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                     physics: NeverScrollableScrollPhysics(), // Disable scrolling in ListView
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      return TransactionListTile(); // Your list item widget
+                      return TransactionItem(); // Your list item widget
                     },
                   ),
                 ],
