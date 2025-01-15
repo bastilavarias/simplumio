@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                 )),
                 subtitle: Text('13,528.00 PHP', style: TextStyle(
                     color: Theme.of(context).colorScheme.primary,
-                    fontSize: Theme.of(context).textTheme.headlineLarge?.fontSize,
+                    fontSize: Theme.of(context).textTheme.displayMedium?.fontSize,
                     fontWeight: FontWeight.bold
                 )),
               ),
