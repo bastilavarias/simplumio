@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_calculator/flutter_simple_calculator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomCalculator extends StatelessWidget {
 
@@ -10,7 +11,7 @@ class CustomCalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color buttonColor = Theme.of(context).colorScheme.surface;
-    TextStyle displayStyle = TextStyle(
+    TextStyle displayStyle = GoogleFonts.poppins(
       color: Theme.of(context).colorScheme.primary,
       fontSize: Theme.of(context).textTheme.displaySmall?.fontSize,
       fontWeight: FontWeight.bold

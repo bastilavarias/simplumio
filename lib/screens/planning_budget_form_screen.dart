@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simplumio/widgets/base/base_dropdown.dart';
+import 'package:simplumio/widgets/base/base_sub_page_app_bar.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
 import 'package:simplumio/widgets/custom/custom_calculator.dart';
 
@@ -61,28 +62,7 @@ class PlanningBudgetFormScreenState extends State<PlanningBudgetFormScreen> {
     List<String> periods = ['One week', '15 Days', 'Monthly', 'Custom'];
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0, // Remove shadow
-        title: Text(
-          'Add new budget',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(
-              Icons.arrow_back_ios_new_outlined,
-              size: Theme.of(context).textTheme.titleMedium?.fontSize
-          ),
-          onPressed: () {
-            Navigator.pop(context); // Pops the current screen from the stack
-          },
-        ),
-      ),
+      appBar: BaseSubPageAppBar(title: 'Add new Budget'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(

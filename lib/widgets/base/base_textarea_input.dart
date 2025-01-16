@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class BaseTextInput extends StatefulWidget {
-  const BaseTextInput({super.key, required this.placeholder, this.label, this.icon, this.prefixIcon, this.suffixIcon});
+class BaseTextAreaInput extends StatefulWidget {
+  const BaseTextAreaInput({super.key, required this.placeholder, this.label, this.icon, this.prefixIcon, this.suffixIcon});
 
   final String placeholder;
   final String? label;
@@ -10,10 +11,10 @@ class BaseTextInput extends StatefulWidget {
   final Widget? suffixIcon;
 
   @override
-  State<BaseTextInput> createState() => BaseTextInputState();
+  State<BaseTextAreaInput> createState() => BaseTextAreaInputState();
 }
 
-class BaseTextInputState extends State<BaseTextInput> {
+class BaseTextAreaInputState extends State<BaseTextAreaInput> {
   @override
   Widget build(BuildContext context) {
     BorderRadius wholeBorder = BorderRadius.circular(20);
@@ -52,10 +53,14 @@ class BaseTextInputState extends State<BaseTextInput> {
               ),
             ),
           ) : Container(),
-          TextField(
+          TextFormField(
+            maxLines: 6,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 16,
+              contentPadding: EdgeInsets.only(
+                bottom: 16,
+                top: 22,
+                left: 16,
+                right: 16,
               ),
               hintText: widget.placeholder,
               hintStyle: TextStyle(
