@@ -78,7 +78,7 @@ class BudgetProgress extends StatelessWidget {
                   Icon(
                     Icons.trending_down, // Use the 'trending_down' icon
                     color: Theme.of(context).colorScheme.secondary, // Set color for the icon
-                    size: 18, // Set the size of the icon
+                    size: Theme.of(context).textTheme.bodyLarge?.fontSize,
                   ),
                 ],
               )

@@ -54,7 +54,7 @@ class BaseTextAreaInputState extends State<BaseTextAreaInput> {
             ),
           ) : Container(),
           TextFormField(
-            maxLines: 6,
+            maxLines: 3,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.only(
                 bottom: 16,

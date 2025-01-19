@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simplumio/widgets/base/base_sub_page_app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simplumio/widgets/base/base_textarea_input.dart';
 import 'package:simplumio/widgets/custom/custom_calculator.dart';
 import 'package:simplumio/utils/money_formatter.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
@@ -29,6 +28,10 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
         tabIndex = tabController.index;
       });
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      onOpenCalculator();
+    });
   }
 
   @override
@@ -37,52 +40,52 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
     super.dispose();
   }
 
+  void onOpenCalculator() {
+    showModalBottomSheet(
+        context: context,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        builder: (BuildContext context) {
+          return SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Enter Amount (PHP)', style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
+                        fontWeight: FontWeight.bold
+                    )),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      child: CustomCalculator(),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        minimumSize: Size(double.infinity, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50), // Custom border radius
+                        ),
+                      ),
+                      child: Text('Set Amount',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              fontWeight: FontWeight.bold
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              )
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-    void onOpenCalculator() {
-      showModalBottomSheet(
-          context: context,
-          backgroundColor: Theme.of(context).colorScheme.onPrimary,
-          builder: (BuildContext context) {
-            return SizedBox(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Enter Amount (PHP)', style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
-                          fontWeight: FontWeight.bold
-                      )),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        child: CustomCalculator(),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.primary,
-                          minimumSize: Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50), // Custom border radius
-                          ),
-                        ),
-                        child: Text('Set Amount',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.onPrimary,
-                                fontWeight: FontWeight.bold
-                            )
-                        ),
-                      )
-                    ],
-                  ),
-                )
-            );
-          });
-    }
-
     return Scaffold(
       appBar: BaseSubPageAppBar(
         title: 'Add new Transaction',
@@ -157,17 +160,22 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
             child: Column(
                 spacing: 30,
                 children: [
-                  theTransactionsDetailsPicker(),
                   BaseTextInput(
-                    label: 'Title',
-                    placeholder: 'Maybe, your food lunch?',
+                    label: 'Date',
+                    placeholder: 'January 14, 2024',
                     icon: false,
                   ),
-                  BaseTextAreaInput(
-                    label: 'Notes',
-                    placeholder: 'Type here...',
+                  BaseTextInput(
+                    label: 'Category',
+                    placeholder: 'Food',
                     icon: false,
                   ),
+                  // BaseTextAreaInput(
+                  //   label: 'Notes',
+                  //   placeholder: 'Type here...',
+                  //   icon: false,
+                  // ),
+                  theTransactionsDetails(),
                 ]
             ),
           )
@@ -251,7 +259,7 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
 
   Widget theAmountDisplayInput() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.2,
+      height: MediaQuery.of(context).size.height * 0.15,
       color: Theme.of(context).colorScheme.onPrimary,
       child: Padding(
         padding: EdgeInsets.all(16),
@@ -259,10 +267,10 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                formatMoney(500),
+                formatMoney(0, false),
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
-                    fontSize: Theme.of(context).textTheme.displayMedium?.fontSize,
+                    fontSize: Theme.of(context).textTheme.displayLarge?.fontSize,
                 )
               ),
             ]
@@ -271,7 +279,7 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
     );
 }
 
-  Widget theTransactionsDetailsPicker() {
+  Widget theTransactionsDetails() {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onSecondary,
@@ -279,24 +287,23 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
       ),
       child: SizedBox(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height * 0.1,
           child: Padding(
-              padding:  EdgeInsets.only(top: 12, left: 16, right: 16),
-              child: Row(
+              padding:  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      'Transaction details',
-                      style: GoogleFonts.poppins(
+                  Text(
+                    'Transaction details',
+                    style: GoogleFonts.poppins(
                         fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
                         color: Theme.of(context).colorScheme.primary, // Set the label text color to gray
                         fontWeight: FontWeight.bold
-                      ),
                     ),
                   ),
+                  SizedBox(height: 10),
+                  theTransactionDetails()
                 ],
-              ),
+              )
             )
       ),
     );
@@ -340,7 +347,7 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            formatMoney(17506),
+            formatMoney(17506, false),
             style: GoogleFonts.poppins(
                 color: Theme.of(context).colorScheme.primary,
                 fontSize: Theme.of(context).textTheme.titleMedium?.fontSize
@@ -351,106 +358,120 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
       onTap: () {},
     );
   }
-}
 
-class DateTimePicker extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: const [
-            Icon(Icons.calendar_today),
-            SizedBox(width: 8),
-            Text('Today'),
-          ],
-        ),
-        Row(
-          children: const [
-            Text('10:03 PM'),
-            SizedBox(width: 8),
-            Icon(Icons.access_time),
-          ],
-        ),
-      ],
-    );
-  }
-}
+  Widget theTransactionDetails() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Date & time'),
+              Row(
+                children: [
+                  Text(
+                    "Today 6:00AM",
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: Theme.of(context).textTheme.labelMedium?.fontSize
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Theme.of(context).colorScheme.secondary,
+                    size: Theme.of(context).textTheme.bodySmall?.fontSize,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Notes'),
+              Row(
+                children: [
+                  Text(
+                    "Add note",
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontStyle: FontStyle.italic,
+                        fontSize: Theme.of(context).textTheme.labelMedium?.fontSize
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Theme.of(context).colorScheme.secondary,
+                    size: Theme.of(context).textTheme.bodySmall?.fontSize,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Type'),
+              Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: Colors.red[600],
+                    size: 12,
+                  ),
+                  const SizedBox(width: 3),
+                  Text(
+                    "Expense",
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: Theme.of(context).textTheme.labelMedium?.fontSize
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Recurring',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Transform.scale(
+                    scale: .8,
+                    child: Switch(
+                      value: true,
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      onChanged: (bool value) {
+                        setState(() {});
+                      },
+                    ),
+                  )
+                ],
+              ),
+              Text(
+                "This transaction will be added again the following months at the same day as today.",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            ],
+          )
 
-class TransactionTypeChips extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        TransactionChip(label: 'Default'),
-        TransactionChip(label: 'Upcoming'),
-        TransactionChip(label: 'Subscription'),
-      ],
-    );
-  }
-}
-
-class TransactionChip extends StatelessWidget {
-  final String label;
-
-  const TransactionChip({required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Chip(
-      label: Text(label),
-      backgroundColor: Colors.grey[200],
-    );
-  }
-}
-
-class AccountChips extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        AccountChip(label: 'Union Bank (PHP)'),
-        AccountChip(label: 'test (USD)'),
-        AccountChip(label: '+'),
-      ],
-    );
-  }
-}
-
-class AccountChip extends StatelessWidget {
-  final String label;
-
-  const AccountChip({required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: Chip(
-        label: Text(label),
-        backgroundColor: Colors.grey[200],
-      ),
-    );
-  }
-}
-
-class AttachmentButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: const [
-            Icon(Icons.attachment),
-            SizedBox(width: 8),
-            Text('Add attachment'),
-          ],
-        ),
-        const Icon(Icons.add),
-      ],
-    );
+          // const Text(
+          //   "Please make sure your name in the payment account matches your OKX account name. You can contact me if you encounter any issues before raising a dispute. When you pay, avoid putting crypto-related words (BTC, ETH, USDT, OKX, Crypto, etc.) in the reference.",
+          //   style: TextStyle(
+          //     color: Colors.grey,
+          //   ),
+          // ),
+        ],
+      );
   }
 }
