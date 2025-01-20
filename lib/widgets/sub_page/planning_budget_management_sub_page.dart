@@ -37,7 +37,7 @@ class PlanningBudgetManagementSubPageState extends State<PlanningBudgetManagemen
               children: [
                 Expanded(
                   child: BaseTextInput(
-                    placeholder: 'Search',
+                    placeholder: 'Search budget',
                     prefixIcon: Icon(
                       Icons.search,
                       color: Theme.of(context).colorScheme.secondary,

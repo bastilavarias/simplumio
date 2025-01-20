@@ -371,16 +371,15 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
                 children: [
                   Text(
                     "Today 6:00AM",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: Theme.of(context).textTheme.labelMedium?.fontSize
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(width: 5),
                   Icon(
                     Icons.arrow_forward_ios,
                     color: Theme.of(context).colorScheme.secondary,
-                    size: Theme.of(context).textTheme.bodySmall?.fontSize,
+                    size: Theme.of(context).textTheme.bodyLarge?.fontSize,
                   ),
                 ],
               ),
@@ -398,44 +397,20 @@ class TransactionFormScreenState extends State<TransactionFormScreen> with Singl
                     style: TextStyle(
                         color: Colors.grey,
                         fontStyle: FontStyle.italic,
-                        fontSize: Theme.of(context).textTheme.labelMedium?.fontSize
+                        fontSize: Theme.of(context).textTheme.labelLarge?.fontSize
                     ),
                   ),
                   SizedBox(width: 5),
                   Icon(
                     Icons.arrow_forward_ios,
                     color: Theme.of(context).colorScheme.secondary,
-                    size: Theme.of(context).textTheme.bodySmall?.fontSize,
+                    size: Theme.of(context).textTheme.bodyLarge?.fontSize,
                   ),
                 ],
               ),
             ],
           ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Type'),
-              Row(
-                children: [
-                  Icon(
-                    Icons.circle,
-                    color: Colors.red[600],
-                    size: 12,
-                  ),
-                  const SizedBox(width: 3),
-                  Text(
-                    "Expense",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: Theme.of(context).textTheme.labelMedium?.fontSize
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 32),
           Column(
             children: [
               Row(

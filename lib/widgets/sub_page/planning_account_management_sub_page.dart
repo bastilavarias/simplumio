@@ -35,7 +35,7 @@ class PlanningAccountManagementSubPageState extends State<PlanningAccountManagem
               children: [
                 Expanded(
                   child: BaseTextInput(
-                    placeholder: 'Search',
+                    placeholder: 'Search account',
                     prefixIcon: Icon(
                       Icons.search,
                       color: Theme.of(context).colorScheme.secondary,
