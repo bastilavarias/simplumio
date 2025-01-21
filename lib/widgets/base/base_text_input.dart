@@ -65,7 +65,7 @@ class BaseTextInputState extends State<BaseTextInput> {
               ),
               border: InputBorder.none,
               filled: true,
-              fillColor: Color(0xFFFAFAFA),
+              fillColor: Theme.of(context).colorScheme.onSecondary,
               focusedBorder: OutlineInputBorder(
                 borderRadius: widget.label != null && widget.label!.isNotEmpty ?  bottomBorderOnly : wholeBorder,
                 borderSide: BorderSide(color: Colors.transparent),

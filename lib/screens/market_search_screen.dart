@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simplumio/widgets/asset_card.dart';
+import 'package:simplumio/widgets/asset_item.dart';
 import 'package:simplumio/widgets/base/base_sub_page_app_bar.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
 
@@ -32,49 +32,53 @@ class MarketSearchScreenState extends State<MarketSearchScreen>  with SingleTick
 
     return Scaffold(
       appBar: BaseSubPageAppBar(title: 'Search Market'),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
+      body: Column(
           children: [
-            BaseTextInput(
-              placeholder: 'Search symbol/name',
-              prefixIcon: Icon(
-                Icons.search,
-                color: Theme.of(context).colorScheme.secondary,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: BaseTextInput(
+                placeholder: 'Search symbol/name',
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
             ),
 
-            TabBar(
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-              labelPadding: EdgeInsets.only(left: 0, right: 16),
-              dividerColor: Colors.transparent,
-              tabAlignment: TabAlignment.start,
-              isScrollable: true,
-              controller: _tabController,
-              indicator: BoxDecoration(
-                border: null,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: TabBar(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
+                labelPadding: EdgeInsets.only(left: 0, right: 16),
+                dividerColor: Colors.transparent,
+                tabAlignment: TabAlignment.start,
+                isScrollable: true,
+                controller: _tabController,
+                indicator: BoxDecoration(
+                  border: null,
+                ),
+                labelStyle: GoogleFonts.poppins(
+                  fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                unselectedLabelStyle: GoogleFonts.poppins(
+                  fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+                tabs: const [
+                  Tab(text: 'Favorites'),
+                  Tab(text: 'Crypto'),
+                  Tab(text: 'Stocks'),
+                  Tab(text: 'ETFs'),
+                ],
               ),
-              labelStyle: GoogleFonts.poppins(
-                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              unselectedLabelStyle: GoogleFonts.poppins(
-                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-              tabs: const [
-                Tab(text: 'Favorites'),
-                Tab(text: 'Crypto'),
-                Tab(text: 'Stocks'),
-                Tab(text: 'ETFs'),
-              ],
             ),
 
             Expanded(
               child: ReorderableListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return AssetCard(
+                  return AssetItem(
                       logoPath: 'assets/images/investments/assets/bitcoin.png',
                       symbol: 'BTC',
                       name: 'Bitcoin',
@@ -95,8 +99,7 @@ class MarketSearchScreenState extends State<MarketSearchScreen>  with SingleTick
               ),
             ),
           ],
-        ),
-      )
+        )
     );
   }
 }

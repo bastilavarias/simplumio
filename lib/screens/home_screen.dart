@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simplumio/widgets/account_card.dart';
+import 'package:simplumio/widgets/base/base_carousel.dart';
 import 'package:simplumio/widgets/budget_progress.dart';
 import 'package:simplumio/widgets/transaction_item.dart';
 
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                 dense: true,
                 title: Text('Account overview', style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
-                  fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
+                  fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
                 )),
                 subtitle: Text('13,528.00 PHP', style: TextStyle(
                     color: Theme.of(context).colorScheme.primary,
@@ -42,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text('Accounts & Budgets', style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
-                          fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
+                          fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
                         )),
                         TextButton(
                           onPressed: () {},
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Text('Manage', style: TextStyle(
                                 color: Theme.of(context).colorScheme.secondary,
-                                fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
+                                fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
                               )),
                               SizedBox(width: 1),
                               Icon(
@@ -64,30 +65,12 @@ class HomeScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    GridView.count(
-                      crossAxisCount: 2, // Two columns
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      childAspectRatio: 2.2, // Adjust as needed for desired aspect ratio
-                      shrinkWrap: true, // Prevent GridView from taking up unnecessary space
-                      physics: const NeverScrollableScrollPhysics(), // Disable scrolling
-                      children: [
+                    BaseCarousel(
+                      items: [
                         AccountCard(
-                          amount: '447.84 PHP',
+                          amount: '100',
                           label: 'Cash',
-                        ),
-                        AccountCard(
-                          amount: '447.84 PHP',
-                          label: 'Cash',
-                        ),
-                        AccountCard(
-                          amount: '447.84 PHP',
-                          label: 'Cash',
-                        ),
-                        AccountCard(
-                          amount: '447.84 PHP',
-                          label: 'Cash',
-                        ),
+                        )
                       ],
                     ),
 
@@ -119,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text('Recent Transactions', style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
-                          fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
+                          fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
                         )),
                         TextButton(
                           onPressed: () {},
@@ -128,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Text('View All', style: TextStyle(
                                 color: Theme.of(context).colorScheme.secondary,
-                                fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
+                                fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
                               )),
                               SizedBox(width: 1),
                               Icon(

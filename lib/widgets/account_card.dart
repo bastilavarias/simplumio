@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AccountCard extends StatelessWidget {
   final String amount;
@@ -12,49 +13,37 @@ class AccountCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Card(
+        shadowColor: Colors.transparent,
+        color: Theme.of(context).colorScheme.onSecondary,
+        child: SizedBox(
+          height: 100,
+          child: Padding(
+            padding: EdgeInsets.only(left: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  label,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
-
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(label),
+                    IconButton(
+                        icon: Icon(Icons.more_vert, color: Theme.of(context).colorScheme.primary),
+                        onPressed: () {},
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 16.0),
                 Text(
-                  '47',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.secondary,
-                    fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
+                  '4,342.71 PHP',
+                  style: GoogleFonts.poppins(
+                    fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                   ),
                 ),
               ],
             ),
-            Expanded(child: Text(
-              amount,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.onPrimary,
-                fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
-              ),
-            ))
-            ,
-          ],
-        ),
+          )
+        )
       );
   }
 }

@@ -22,7 +22,7 @@ class AppTheme {
         primary: Colors.black,
         onPrimary: Colors.white,
         secondary: Colors.grey[500]!,
-        onSecondary: Color(0xFFFAFAFA),
+        onSecondary: Color(0xFFF9F9FB),
         surface: Color(0xFFFFFFFF),
         onSurface: Colors.black,
       ),
@@ -32,7 +32,7 @@ class AppTheme {
           if (state.contains(WidgetState.selected)) {
             return TextStyle(color: Colors.white, fontWeight: FontWeight.bold); // Change this in the future
           }
-          return TextStyle(color: Colors.grey[500]);
+          return TextStyle(color: Colors.grey[500]!);
         }),
       ),
     );
