@@ -60,6 +60,7 @@ class MarketSearchScreenState extends State<MarketSearchScreen>  with SingleTick
                 labelStyle: GoogleFonts.poppins(
                   fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
                   color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w500
                 ),
                 unselectedLabelStyle: GoogleFonts.poppins(
                   fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,

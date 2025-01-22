@@ -19,25 +19,31 @@ class AccountCard extends StatelessWidget {
         child: SizedBox(
           height: 100,
           child: Padding(
-            padding: EdgeInsets.only(left: 16),
+            padding: EdgeInsets.only(left: 16, bottom: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(label),
+                    Text(
+                      label,
+                      style: TextStyle(
+                        fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                      ),
+                    ),
                     IconButton(
                         icon: Icon(Icons.more_vert, color: Theme.of(context).colorScheme.primary),
                         onPressed: () {},
                     ),
                   ],
                 ),
-                const SizedBox(height: 16.0),
                 Text(
                   '4,342.71 PHP',
                   style: GoogleFonts.poppins(
                     fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
+                    fontWeight: FontWeight.w600
                   ),
                 ),
               ],

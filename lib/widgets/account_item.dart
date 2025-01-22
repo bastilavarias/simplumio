@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:simplumio/screens/planning_account_form_screen.dart';
 import 'package:simplumio/screens/transaction_screen.dart';
 
@@ -20,11 +21,16 @@ class AccountItem extends StatelessWidget {
     }
 
     return ListTile(
-      title: Text('Cash'),
+      title: Text('Cash',
+                style: GoogleFonts.poppins(
+                  fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).colorScheme.primary
+                ),
+      ),
       subtitle: Text(
-        'Transactions: 47',
+        '47 transactions',
         style: TextStyle(
-          fontWeight: FontWeight.bold,
           color: Theme.of(context).colorScheme.secondary,
         ),
       ),
@@ -33,10 +39,10 @@ class AccountItem extends StatelessWidget {
         children: [
           Text(
             "447.84 PHP",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize
+            style: GoogleFonts.poppins(
+                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).colorScheme.primary
             ),
           ),
         ],

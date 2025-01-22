@@ -23,6 +23,7 @@ class BaseCarousel extends StatelessWidget {
       options: CarouselOptions(
         autoPlay: autoPlay,
         enlargeCenterPage: enlargeCenterPage,
+        height: height,
       ),
       items: items.map((item) {
         return item;

@@ -66,6 +66,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     BaseCarousel(
+                      height: 120,
                       items: [
                         AccountCard(
                           amount: '100',

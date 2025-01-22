@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:simplumio/screens/planning_account_form_screen.dart';
 import 'package:simplumio/screens/transaction_screen.dart';
 
@@ -37,15 +38,18 @@ class BudgetProgress extends StatelessWidget {
             children: [
               Text(
                 'Office Budget',
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               Text(
                 '${transferLimit.toStringAsFixed(2)} PHP',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                style: GoogleFonts.poppins(
                   fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
             ],

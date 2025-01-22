@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TransactionItem extends StatelessWidget {
 
@@ -11,27 +12,25 @@ class TransactionItem extends StatelessWidget {
     return ListTile(
       title: Text(
         '2pc Chicken',
-        style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.primary,
+        style: GoogleFonts.poppins(
             fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
+            fontWeight: FontWeight.w600,
+            color: Theme.of(context).colorScheme.primary,
         ),
       ),
       subtitle: Text(
-        'Jul 15',
+        'Cash',
         style: TextStyle(
-          fontWeight: FontWeight.bold,
           color: Theme.of(context).colorScheme.secondary,
-          fontSize: Theme.of(context).textTheme.labelSmall?.fontSize,
         ),
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            '-450.40',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+            '-₱450.40',
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w600,
               color: Colors.red, // Use the provided color for the amount
               fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
             ),
