@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simplumio/screens/market_search_screen.dart';
 import 'package:simplumio/widgets/base/base_dropdown.dart';
 import 'package:simplumio/widgets/base/base_sub_page_app_bar.dart';
+import 'package:simplumio/widgets/base/base_text_divider.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
 import 'package:simplumio/widgets/custom/custom_calculator.dart';
 
@@ -50,6 +51,42 @@ class InvestmentFormScreenState extends State<InvestmentFormScreen> {
                 label: 'Value',
                 placeholder: '0.00',
                 icon: false,
+              ),
+              BaseTextDivider(
+                  dividerColor: Theme.of(context).colorScheme.onSecondary,
+                  textColor: Theme.of(context).colorScheme.secondary,
+                  text: 'or',
+              ),
+              Column(
+                spacing: 10,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.currency_bitcoin), // Binance icon
+                      label: Text('Connect Binance'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.onSecondary,
+                        elevation: 0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        // Handle button press
+                      },
+                      icon: Icon(Icons.file_copy_outlined),
+                      label: Text('Import from file'),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(context).colorScheme.onSecondary,
+                          elevation: 0
+                      ),
+                    ),
+                  )
+                ],
               )
             ],
           ),
