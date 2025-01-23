@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simplumio/widgets/sub_page/planning_account_management_sub_page.dart';
-import 'package:simplumio/widgets/sub_page/planning_budget_management_sub_page.dart';
-import 'package:simplumio/widgets/sub_page/planning_investment_management_sub_page.dart';
+import 'package:simplumio/widgets/sub_page/account_management_sub_page.dart';
+import 'package:simplumio/widgets/sub_page/budget_management_sub_page.dart';
+import 'package:simplumio/widgets/sub_page/investment_management_sub_page.dart';
 
 class PlanningScreen extends StatefulWidget {
   const PlanningScreen({super.key});
@@ -63,9 +63,9 @@ class PlanningScreenState extends State<PlanningScreen>
             child: TabBarView(
               controller: _tabController,
               children: [
-                PlanningAccountManagementSubPage(),
-                PlanningBudgetManagementSubPage(),
-                PlanningInvestmentManagementSubPage()
+                AccountManagementSubPage(),
+                BudgetManagementSubPage(),
+                InvestmentManagementSubPage()
               ],
             ),
           ),

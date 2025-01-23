@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:simplumio/screens/investment_form_screen.dart';
 import 'package:simplumio/screens/market_search_screen.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
+import 'package:simplumio/widgets/custom/custom_money_text_rich.dart';
 import 'package:simplumio/widgets/sub_page/investment_own_asset_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PlanningInvestmentManagementSubPage extends StatefulWidget {
-  const PlanningInvestmentManagementSubPage({super.key});
+class InvestmentManagementSubPage extends StatefulWidget {
+  const InvestmentManagementSubPage({super.key});
 
   @override
-  State<PlanningInvestmentManagementSubPage> createState() => PlanningInvestmentManagementSubPageState();
+  State<InvestmentManagementSubPage> createState() => InvestmentManagementSubPageState();
 }
 
-class PlanningInvestmentManagementSubPageState extends State<PlanningInvestmentManagementSubPage> with SingleTickerProviderStateMixin {
+class InvestmentManagementSubPageState extends State<InvestmentManagementSubPage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -26,10 +28,17 @@ class PlanningInvestmentManagementSubPageState extends State<PlanningInvestmentM
     super.dispose();
   }
 
-  void onOpenAddForm() {
+  void onOpenSearchForm() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const MarketSearchScreen()),
+    );
+  }
+
+  void onOpenAddForm() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const InvestmentFormScreen()),
     );
   }
 
@@ -47,19 +56,46 @@ class PlanningInvestmentManagementSubPageState extends State<PlanningInvestmentM
             children: [
               Padding(
                 padding: EdgeInsets.all(16),
-                child: GestureDetector(
-                  onTap: () {
-                    onOpenAddForm();
-                  },
-                  child: AbsorbPointer(
-                      child: BaseTextInput(
-                        placeholder: 'Search market',
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Theme.of(context).colorScheme.secondary,
+                child:  Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  spacing: 6,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          onOpenSearchForm();
+                        },
+                        child: AbsorbPointer(
+                          child: BaseTextInput(
+                            placeholder: 'Search market',
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                          ),
                         ),
-                      )
-                  ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        onOpenAddForm();
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary, // Button background color
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20), // Rounded button
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 16), // Button padding
+                      ),
+                      child: Text(
+                        'Add',
+                        style: TextStyle(
+                          color: Colors.white, // Button text color
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -76,21 +112,16 @@ class PlanningInvestmentManagementSubPageState extends State<PlanningInvestmentM
                         fontSize: Theme.of(context).textTheme.displaySmall?.fontSize,
                         fontWeight: FontWeight.bold
                     )),
-                    Text.rich(
-                      TextSpan(
-                        style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                        text: 'Today\'s PNL ',
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: '+₱898.87',
-                            style: TextStyle(color: Colors.green[600]),
-                          ),
-                          TextSpan(
-                            text: '(-0.45%)',
-                            style: TextStyle(color: Colors.green[600]),
-                          ),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        Text('Todays PNL ', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                        CustomMoneyTextRich(
+                            color: Colors.green[600],
+                            prefix: '+₱',
+                            value: '898.87'
+                        ),
+                        Text(' (0.45%)', style: TextStyle(color: Colors.green[600])),
+                      ],
                     )
                   ],
                 ),

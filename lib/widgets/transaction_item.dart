@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:simplumio/widgets/custom/custom_money_text_rich.dart';
 
 class TransactionItem extends StatelessWidget {
 
@@ -27,14 +28,13 @@ class TransactionItem extends StatelessWidget {
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            '-₱450.40',
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w600,
-              color: Colors.red, // Use the provided color for the amount
-              fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
-            ),
-          ),
+          CustomMoneyTextRich(
+              color: Colors.green[600],
+              prefix: '+₱',
+              value: '898.87',
+              size: Theme.of(context).textTheme.labelLarge?.fontSize,
+              fontWeight: FontWeight.bold,
+          )
         ],
       ),
     );

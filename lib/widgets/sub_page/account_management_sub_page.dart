@@ -1,34 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:simplumio/screens/planning_account_form_screen.dart';
-import 'package:simplumio/screens/planning_budget_form_screen.dart';
 import 'package:simplumio/widgets/account_item.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
-import 'package:simplumio/widgets/budget_progress.dart';
+import 'package:simplumio/screens/account_form_screen.dart';
 
-class PlanningBudgetManagementSubPage extends StatefulWidget {
-  const PlanningBudgetManagementSubPage({super.key});
+class AccountManagementSubPage extends StatefulWidget {
+  const AccountManagementSubPage({super.key});
 
   @override
-  State<PlanningBudgetManagementSubPage> createState() => PlanningBudgetManagementSubPageState();
+  State<AccountManagementSubPage> createState() => AccountManagementSubPageState();
 }
 
-class PlanningBudgetManagementSubPageState extends State<PlanningBudgetManagementSubPage> {
+class AccountManagementSubPageState extends State<AccountManagementSubPage> {
 
   void onOpenAddForm() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const PlanningBudgetFormScreen()),
+      MaterialPageRoute(builder: (context) => const AccountFormScreen()),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> items = List.generate(10, (index) => 'Item ${index + 1}');
+    final List<String> items = List.generate(15, (index) => 'Item ${index + 1}');
     // TODO: implement build
 
     return Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
+      padding: EdgeInsets.all(16),
+      child: Column(
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +35,7 @@ class PlanningBudgetManagementSubPageState extends State<PlanningBudgetManagemen
               children: [
                 Expanded(
                   child: BaseTextInput(
-                    placeholder: 'Search budget',
+                    placeholder: 'Search account',
                     prefixIcon: Icon(
                       Icons.search,
                       color: Theme.of(context).colorScheme.secondary,
@@ -69,17 +67,13 @@ class PlanningBudgetManagementSubPageState extends State<PlanningBudgetManagemen
               child: ReorderableListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    key: Key('${index}'),
-                    padding: EdgeInsets.all(16),
-                    child: BudgetProgress(transferLimit: 6700, amountSpent: 2400),
-                  );
+                  return AccountItem(id: index, key: Key('${index}'));
                 },
                 onReorder: (int oldIndex, int newIndex) {
                   setState(() {
                     if (oldIndex < newIndex) {
                       newIndex -= 1;
-                    }
+                  }
                     final String item = items.removeAt(oldIndex);
                     items.insert(newIndex, item);
                   });

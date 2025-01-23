@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simplumio/screens/planning_account_form_screen.dart';
 import 'package:simplumio/screens/transaction_screen.dart';
+import 'package:simplumio/screens/account_form_screen.dart';
 
 class AccountItem extends StatelessWidget {
   const AccountItem({super.key, required this.id});
@@ -62,7 +62,7 @@ class AccountItemMoreActions extends StatelessWidget {
     void onOpenEditFormScreen() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const PlanningAccountFormScreen()),
+        MaterialPageRoute(builder: (context) => const AccountFormScreen()),
       );
     }
 

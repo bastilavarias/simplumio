@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:simplumio/widgets/base/base_dropdown.dart';
 import 'package:simplumio/widgets/base/base_sub_page_app_bar.dart';
 import 'package:simplumio/widgets/base/base_text_input.dart';
 import 'package:simplumio/widgets/custom/custom_calculator.dart';
 
-class PlanningAccountFormScreen extends StatefulWidget {
-  const PlanningAccountFormScreen({super.key});
+class BudgetFormScreen extends StatefulWidget {
+  const BudgetFormScreen({super.key});
 
   @override
-  State<PlanningAccountFormScreen> createState() => PlanningAccountFormScreenState();
+  State<BudgetFormScreen> createState() => BudgetFormScreenState();
 }
 
-class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
+class BudgetFormScreenState extends State<BudgetFormScreen> {
 
   void onOpenCalculator() {
     showModalBottomSheet(
@@ -58,38 +59,50 @@ class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> periods = ['One week', '15 Days', 'Monthly', 'Custom'];
 
     return Scaffold(
-      appBar: BaseSubPageAppBar(title: 'Add new Account'),
+      appBar: BaseSubPageAppBar(title: 'Add new Budget'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          spacing: 30,
-          children: [
-            BaseTextInput(
-              label: 'Account Name',
-              placeholder: 'Cash',
-              icon: false,
-            ),
-            BaseTextInput(
-              label: 'Account Number (optional)',
-              placeholder: '123-456-7890',
-              icon: true,
-            ),
-            GestureDetector(
-              onTap: () {
-                onOpenCalculator();
-              },
-              child: AbsorbPointer(
-                child: BaseTextInput(
-                  label: 'Initial value',
-                  placeholder: '0.00',
-                  icon: false,
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: 30,
+            children: [
+              BaseTextInput(
+                label: 'Name',
+                placeholder: 'Office Budget',
+                icon: false,
+              ),
+              GestureDetector(
+                onTap: () {
+                  onOpenCalculator();
+                },
+                child: AbsorbPointer(
+                  child: BaseTextInput(
+                    label: 'Initial value',
+                    placeholder: '0.00',
+                    icon: false,
+                  ),
                 ),
               ),
-            ),
-
-          ],
+              BaseDropdown(
+                label: 'Period',
+                placeholder: 'Select period',
+                items: periods,
+              ),
+              BaseDropdown(
+                label: 'From',
+                placeholder: 'Select Date',
+                items: [],
+              ),
+              BaseDropdown(
+                label: 'To',
+                placeholder: 'Select Date',
+                items: [],
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: SizedBox(
@@ -102,7 +115,7 @@ class PlanningAccountFormScreenState extends State<PlanningAccountFormScreen> {
               onPressed: () {},
               backgroundColor: Theme.of(context).colorScheme.primary,
               label: Text(
-                'Save Account',
+                'Save Budget',
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onPrimary,
                   fontWeight: FontWeight.bold
