@@ -107,10 +107,10 @@ class InvestmentManagementSubPageState extends State<InvestmentManagementSubPage
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('13,528.00 PHP', style: TextStyle(
+                    Text('13,528.00 PHP', style: GoogleFonts.poppins(
                         color: Theme.of(context).colorScheme.primary,
                         fontSize: Theme.of(context).textTheme.displaySmall?.fontSize,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.w600
                     )),
                     Row(
                       children: [

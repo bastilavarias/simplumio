@@ -3,6 +3,7 @@ import 'package:simplumio/widgets/account_card.dart';
 import 'package:simplumio/widgets/base/base_carousel.dart';
 import 'package:simplumio/widgets/budget_progress.dart';
 import 'package:simplumio/widgets/transaction_item.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,7 +14,6 @@ class HomeScreen extends StatelessWidget {
     return Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
-        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -23,10 +23,10 @@ class HomeScreen extends StatelessWidget {
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
                 )),
-                subtitle: Text('13,528.00 PHP', style: TextStyle(
+                subtitle: Text('13,528.00 PHP', style: GoogleFonts.poppins(
                     color: Theme.of(context).colorScheme.primary,
                     fontSize: Theme.of(context).textTheme.displayMedium?.fontSize,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.w600
                 )),
               ),
 

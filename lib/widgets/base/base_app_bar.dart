@@ -13,7 +13,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         children: [
           CircleAvatar(
-            radius: 18,
+            radius: 14,
             backgroundImage: AssetImage('assets/images/human.png'), // Replace with your asset image
           ),
           SizedBox(width: 12),
@@ -21,7 +21,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
             'Walter White',
             style: TextStyle(
               color: Colors.black,
-              fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
+              fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
               fontWeight: FontWeight.bold,
             ),
           ),

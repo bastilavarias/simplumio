@@ -31,7 +31,6 @@ class PlanningScreenState extends State<PlanningScreen>
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: Colors.white,
       child: Column(
         children: [
           TabBar(
@@ -43,6 +42,7 @@ class PlanningScreenState extends State<PlanningScreen>
             indicator: BoxDecoration(
               border: null,
             ),
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
             labelStyle: GoogleFonts.poppins(
               fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
               color: Theme.of(context).colorScheme.primary,

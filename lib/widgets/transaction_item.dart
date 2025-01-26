@@ -14,7 +14,6 @@ class TransactionItem extends StatelessWidget {
       title: Text(
         '2pc Chicken',
         style: GoogleFonts.poppins(
-            fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
             fontWeight: FontWeight.w600,
             color: Theme.of(context).colorScheme.primary,
         ),

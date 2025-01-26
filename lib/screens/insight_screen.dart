@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simplumio/widgets/insight_main_graph.dart';
 
 class InsightScreen extends StatelessWidget {
   const InsightScreen({super.key});
@@ -9,13 +10,14 @@ class InsightScreen extends StatelessWidget {
     return Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
-        color: Colors.white,
-        child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16),
           child: Column(
-            children: [
-              Text('Insight')
-            ],
-          ),
+              children: [
+                Text('This page would be like scrolling/story based insight of your spending'),
+                SizedBox(height: 40),
+              ]
+          )
         )
     );
   }
