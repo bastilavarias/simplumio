@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:simplumio/widgets/profile_account_menu.dart';
 import 'package:simplumio/widgets/profile_menu_item.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -54,73 +55,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
 
-            Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Accounts', style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
-                      )),
-                      SizedBox(height: 10),
-                      ListView.builder(
-                        shrinkWrap: true, // Important: Set shrinkWrap to true
-                        physics: NeverScrollableScrollPhysics(), // Disable scrolling in ListView
-                        itemCount: 2,
-                        itemBuilder: (context, index) {
-                          return ProfileMenuItem(); // Your list item widget
-                        },
-                      )
-                    ]
-                )
-            ),
-
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Preferences', style: TextStyle(
-                  color: Theme.of(context).colorScheme.secondary,
-                  fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
-                )),
-                SizedBox(height: 10),
-                ListView.builder(
-                  shrinkWrap: true, // Important: Set shrinkWrap to true
-                  physics: NeverScrollableScrollPhysics(), // Disable scrolling in ListView
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return ProfileMenuItem(); // Your list item widget
-                  },
-                )
-              ]
-            )
-            ),
-
-            Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('System', style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
-                      )),
-                      SizedBox(height: 10),
-                      ListView.builder(
-                        shrinkWrap: true, // Important: Set shrinkWrap to true
-                        physics: NeverScrollableScrollPhysics(), // Disable scrolling in ListView
-                        itemCount: 3,
-                        itemBuilder: (context, index) {
-                          return ProfileMenuItem(); // Your list item widget
-                        },
-                      )
-                    ]
-                )
-            ),
-
-            //
+            ProfileAccountMenu()
           ],
         ),
       ),

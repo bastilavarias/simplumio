@@ -18,6 +18,10 @@ class ProfileMenuItem extends StatelessWidget {
           color: Theme.of(context).colorScheme.primary,
         ),
       ),
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Theme.of(context).colorScheme.secondary),
+        borderRadius: BorderRadius.circular(5),
+      ),
     );
   }
 }
